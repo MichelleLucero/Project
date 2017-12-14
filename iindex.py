@@ -23,7 +23,8 @@ def search(w1, w2, key, dict):
     l = {} #ultimate dictionary result
     w1_val = [] #list of values taken from w1 dict (one)
     w2_val = [] #list of values taken from w2 dict (two)
-
+    w1_w2_val = [] #list of values from w1 and list of values from w2(for the OR). List before the duplicates are removed
+    w1_and_w2 = [] #list of vlues from w1 and w2
     #turning w1 and w2 into dicts
     one = find_word(dict, w1)
     two = find_word(dict, w2)
@@ -40,14 +41,15 @@ def search(w1, w2, key, dict):
     if key.lower() == "or":
 
         #clean up list
-        if find_word(dict, w1) != {}:
-            for w in one.values():
-                l.setdefault(w1,[])
-                l[w1].append(w)
-        if find_word(dict, w2) != {}:
-            for w in two.values():
-                l.setdefault(w2,[])
-                l[w2].append(w)
+        k = w1 + ' or ' + w2
+        for val in w1_val:
+            w1_w2_val.append(val)
+        for vals in w2_val:
+            w1_w2_val.append(vals)
+        both_values = list(set(w1_w2_val)) #removing duplicates from w1_w2_val  
+        l.setdefault(k, both_values) 
+
+
     elif key.lower() == "and":
         
         k = w1 + " and " + w2
@@ -56,6 +58,17 @@ def search(w1, w2, key, dict):
                 if val == vals:
                     l.setdefault(k, [])
                     l[k].append(val)
+    
+    elif key.lower() == "not":
+        k = w1 + " not " + w2
+        for val in w1_val:
+            for vals in w2_val:
+                if val == vals:
+                    w1_and_w2.append(val)
+        for i in w1_val:
+            if i not in w1_and_w2:
+                l.setdefault(k,[])
+                l[k].append(i)
                 
     return l
 #apples in a bag
@@ -71,8 +84,8 @@ anger_word = ['hate', 'hell', 'damn']
 
 d = csv_d('offenders.csv')
 
-#print(search("sorry", "hate", "or", d))
-print(search("sorry", "hate", "and", d))
+#print(search("sorry", "hate", "and", d))
+print(search("sorry", "forgive", "not", d))
 
 
 '''
