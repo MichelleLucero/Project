@@ -9,7 +9,7 @@ def csv_d(file):
     f.close()
     return l
 
-def find_word(dict, word):
+def find_word(dict, word): #works specifically for the csv file 
     fw = {}
     for name_of_cat in dict:
         statement = name_of_cat['Last Statement']
