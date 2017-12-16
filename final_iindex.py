@@ -1,7 +1,8 @@
 import csv
 import nltk
 from nltk.stem import PorterStemmer
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import sent_tokenize, word_tokenize
+ps = PorterStemmer()
 
 def csv_d(file):
     l = []
@@ -92,27 +93,46 @@ def search(w1, w2, key, dict):
                 l[k].append(i)
                 
     return l
-#apples in a bag
+
+
+def init_nltk():
+    global tokenizer
+    global tagger
+    tokenizer = nltk.tokenize.RegexpTokenizer(r'\w+|[^\w\s]+')
+    tagger = nltk.UnigramTagger(nltk.corpus.brown.tagged_sents())
+
+def tag(text):
+    global tokenizer
+    global tagger
+    if not tokenizer:
+        init_nltk()
+    tokenized = tokenizer.tokenize(text)
+    tagged = tagger.tag(tokenized)
+    tagged.sort(lambda x,y:cmp(x[1],y[1]))
+    return tagged
+
+    
+
+example_words = ["living","planning","growing"]
+
             
 
 
 d = csv_d('famous_quotes.csv')
 
-<<<<<<< HEAD
-
-
-
 print(search("is", "life", "not", d))
 
-
-=======
-#print(search("are", "for", "and", d))
-print (search("is", "fail", "or", d))
-
+#add possible ways of implementing stem library
+example_words = ["planning","growing","living"]
+for w in example_words:
+    print(ps.stem(w))
+#antoher form of implemention
+print (d.concordance("hard"))
+print (d.dispersion_plot(["help", "live"]))
 
 '''
 for key, val in iindex(d, remorse_word).items():
     print(key)
     print(' = ' + str(val), '\n')
 '''
->>>>>>> e57a5124f77fe7c460d1f2b97a1fe51d5381029e
+
