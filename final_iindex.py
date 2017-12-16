@@ -12,9 +12,9 @@ def csv_d(file):
 def find_word(dict, word): #works specifically for the csv file 
     fw = {}
     for name_of_cat in dict:
-        statement = name_of_cat['Last Statement']
+        statement = name_of_cat['Quote']
         if word in statement:   
-            execute = name_of_cat['Execution #']
+            execute = name_of_cat['Quote #']
             fw.setdefault(word,[])
             fw[word].append(execute)   
     return fw
@@ -82,7 +82,7 @@ remorse_word = ['sorry', 'apologize', 'forgiveness', 'peace', 'forgive', 'god'
                 'love', 'sad', 'terrible', 'bless']
 anger_word = ['hate', 'hell', 'damn'] 
 
-d = csv_d('offenders.csv')
+d = csv_d('famous_quotes.csv')
 
 #print(search("sorry", "hate", "and", d))
 print(search("sorry", "forgive", "not", d))
