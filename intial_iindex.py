@@ -15,7 +15,11 @@ def invertedindex(file):
     for line in csv_reader:
         l.append(line)
     f.close()
+<<<<<<< HEAD
 #credits
+=======
+    credits
+>>>>>>> e57a5124f77fe7c460d1f2b97a1fe51d5381029e
     dictionary = {}
     
     for x in l:
@@ -26,13 +30,14 @@ def invertedindex(file):
     return dictionary
 
 def find_the_word(l):
-    executionnumber = invertedindex("offenders.csv")
+    executionnumber = invertedindex("famous_quotes.csv")
     for i in executionnumber:
         if i == l: 
             return executionnumber[i]
 
 def search(word1, word2, key):
     #key "and", "or", "not"
+<<<<<<< HEAD
     if key.lower() = "and":
         if 
             return find_the_world(word1) and find_the_word(word2)
@@ -43,4 +48,7 @@ def search(word1, word2, key):
   
 
 find_the_word = find_the_word("Warden")
+=======
+    find_the_word = find_the_word("not")
+>>>>>>> e57a5124f77fe7c460d1f2b97a1fe51d5381029e
 print(find_the_word)

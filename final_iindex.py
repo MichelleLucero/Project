@@ -98,9 +98,21 @@ def search(w1, w2, key, dict):
 
 d = csv_d('famous_quotes.csv')
 
+<<<<<<< HEAD
 
 
 
 print(search("is", "life", "not", d))
 
 
+=======
+#print(search("are", "for", "and", d))
+print (search("is", "fail", "or", d))
+
+
+'''
+for key, val in iindex(d, remorse_word).items():
+    print(key)
+    print(' = ' + str(val), '\n')
+'''
+>>>>>>> e57a5124f77fe7c460d1f2b97a1fe51d5381029e
