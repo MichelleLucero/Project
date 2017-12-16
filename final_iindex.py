@@ -10,13 +10,17 @@ def csv_d(file):
     f.close()
     return l
 
+<<<<<<< HEAD:iindex.py
 
 def find_word(dict, word):
+=======
+def find_word(dict, word): #works specifically for the csv file 
+>>>>>>> 754a1946e254d446cca33f408c13dd1739915751:final_iindex.py
     fw = {}
     for name_of_cat in dict:
-        statement = name_of_cat['Last Statement']
+        statement = name_of_cat['Quote']
         if word in statement:   
-            execute = name_of_cat['Execution #']
+            execute = name_of_cat['Quote #']
             fw.setdefault(word,[])
             fw[word].append(execute)   
     return fw
@@ -83,8 +87,13 @@ def search(w1, w2, key, dict):
 remorse_word = ['sorry', 'apologize', 'forgiveness', 'peace', 'forgive', 'god'
                 'love', 'sad', 'terrible', 'bless']
 anger_word = ['hate', 'hell', 'damn'] 
+<<<<<<< HEAD:iindex.py
 '''
 d = csv_d('offenders.csv')
+=======
+
+d = csv_d('famous_quotes.csv')
+>>>>>>> 754a1946e254d446cca33f408c13dd1739915751:final_iindex.py
 
 #print(search("sorry", "hate", "and", d))
 print(search("sorry", "forgive", "not", d))
