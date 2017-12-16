@@ -1,4 +1,5 @@
 import csv
+import nltk
 
 def csv_d(file):
     l = []
@@ -8,6 +9,7 @@ def csv_d(file):
         l.append(line)
     f.close()
     return l
+
 
 def find_word(dict, word):
     fw = {}
@@ -24,7 +26,7 @@ def search(w1, w2, key, dict):
     w1_val = [] #list of values taken from w1 dict (one)
     w2_val = [] #list of values taken from w2 dict (two)
     w1_w2_val = [] #list of values from w1 and list of values from w2(for the OR). List before the duplicates are removed
-    w1_and_w2 = [] #list of vlues from w1 and w2
+    w1_and_w2 = [] #list of values from w1 and w2(for the NOT)
     #turning w1 and w2 into dicts
     one = find_word(dict, w1)
     two = find_word(dict, w2)
@@ -41,7 +43,7 @@ def search(w1, w2, key, dict):
     if key.lower() == "or":
 
         #clean up list
-        k = w1 + ' or ' + w2
+        k = w1 + ' OR ' + w2
         for val in w1_val:
             w1_w2_val.append(val)
         for vals in w2_val:
@@ -52,7 +54,7 @@ def search(w1, w2, key, dict):
 
     elif key.lower() == "and":
         
-        k = w1 + " and " + w2
+        k = w1 + " AND " + w2
         for val in w1_val:
             for vals in w2_val:
                 if val == vals:
@@ -60,7 +62,7 @@ def search(w1, w2, key, dict):
                     l[k].append(val)
     
     elif key.lower() == "not":
-        k = w1 + " not " + w2
+        k = w1 + " NOT " + w2
         for val in w1_val:
             for vals in w2_val:
                 if val == vals:
@@ -77,11 +79,11 @@ def search(w1, w2, key, dict):
             and find_the_word(word2)
     elif key.lower() = "or":
         return 
-'''
+
 remorse_word = ['sorry', 'apologize', 'forgiveness', 'peace', 'forgive', 'god'
                 'love', 'sad', 'terrible', 'bless']
 anger_word = ['hate', 'hell', 'damn'] 
-
+'''
 d = csv_d('offenders.csv')
 
 #print(search("sorry", "hate", "and", d))
