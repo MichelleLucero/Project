@@ -15,7 +15,7 @@ def invertedindex(file):
     for line in csv_reader:
         l.append(line)
     f.close()
-credits
+#credits
     dictionary = {}
     
     for x in l:
@@ -33,8 +33,13 @@ def find_the_word(l):
 
 def search(word1, word2, key):
     #key "and", "or", "not"
+    if key.lower() = "and":
+        if 
+            return find_the_world(word1) and find_the_word(word2)
+    elif key.lower() = "or":
+        return 
 
-    
+
   
 
 find_the_word = find_the_word("Warden")
