@@ -1,5 +1,7 @@
 import csv
 import nltk
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
 
 def csv_d(file):
     l = []
@@ -10,20 +12,29 @@ def csv_d(file):
     f.close()
     return l
 
-<<<<<<< HEAD:iindex.py
-
-def find_word(dict, word):
-=======
 def find_word(dict, word): #works specifically for the csv file 
->>>>>>> 754a1946e254d446cca33f408c13dd1739915751:final_iindex.py
     fw = {}
     for name_of_cat in dict:
         statement = name_of_cat['Quote']
-        if word in statement:   
+
+        if word in statement: 
             execute = name_of_cat['Quote #']
             fw.setdefault(word,[])
             fw[word].append(execute)   
     return fw
+"""
+def find_word(dict, word): #works specifically for the csv file 
+    fw = {}
+    for name_of_cat in dict:
+        statement = name_of_cat['Quote']
+        if word in statement: 
+            execute = name_of_cat['Quote #']
+            fw.setdefault(word,[])
+            fw[word].append(execute)   
+    return fw
+"""
+
+
 
 def search(w1, w2, key, dict):
     l = {} #ultimate dictionary result
@@ -32,8 +43,12 @@ def search(w1, w2, key, dict):
     w1_w2_val = [] #list of values from w1 and list of values from w2(for the OR). List before the duplicates are removed
     w1_and_w2 = [] #list of values from w1 and w2(for the NOT)
     #turning w1 and w2 into dicts
-    one = find_word(dict, w1)
-    two = find_word(dict, w2)
+
+    #wt1 = str(word_tokenize(w1)) 
+    #wt2 = str(word_tokenize(w2)) 
+
+    one = find_word(dict, w1) 
+    two = find_word(dict, w2) 
 
     #getting the values out of the dictionary (as stated before)
     for v in one.values():
@@ -79,28 +94,13 @@ def search(w1, w2, key, dict):
     return l
 #apples in a bag
             
-'''       
-            and find_the_word(word2)
-    elif key.lower() = "or":
-        return 
 
-remorse_word = ['sorry', 'apologize', 'forgiveness', 'peace', 'forgive', 'god'
-                'love', 'sad', 'terrible', 'bless']
-anger_word = ['hate', 'hell', 'damn'] 
-<<<<<<< HEAD:iindex.py
-'''
-d = csv_d('offenders.csv')
-=======
 
 d = csv_d('famous_quotes.csv')
->>>>>>> 754a1946e254d446cca33f408c13dd1739915751:final_iindex.py
-
-#print(search("sorry", "hate", "and", d))
-print(search("sorry", "forgive", "not", d))
 
 
-'''
-for key, val in iindex(d, remorse_word).items():
-    print(key)
-    print(' = ' + str(val), '\n')
-'''
+
+
+print(search("is", "life", "not", d))
+
+
