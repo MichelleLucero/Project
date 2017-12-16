@@ -84,8 +84,8 @@ anger_word = ['hate', 'hell', 'damn']
 
 d = csv_d('famous_quotes.csv')
 
-#print(search("sorry", "hate", "and", d))
-print(search("sorry", "forgive", "not", d))
+#print(search("are", "for", "and", d))
+print (search("is", "fail", "or", d))
 
 
 '''
