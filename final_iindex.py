@@ -4,7 +4,7 @@ from nltk.stem import PorterStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
 ps = PorterStemmer()
 
-def csv_d(file):
+def csv_d(file): 
     l = []
     f = open(file)
     csv_dict_reader = csv.DictReader(f)
@@ -132,7 +132,7 @@ print (d.dispersion_plot(["help", "live"])) #print a plot
 
 
 
-print('The nltk version is {}.'.format(nltk.__version__)) #delete this but
+print('The nltk version is {}.'.format(nltk.__version__)) 
 #just to check the nltk version 
 
 '''

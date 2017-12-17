@@ -1,6 +1,6 @@
 import csv
 
-def alpha(word): # splits everything making sure all the words are alphabetical
+def alpha(word): 
     total=""
     for i in word:
         if i.isalpha() or i == " ": 
