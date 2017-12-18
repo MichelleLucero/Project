@@ -23,18 +23,6 @@ def find_word(dict, word): #works specifically for the csv file
             fw.setdefault(word,[])
             fw[word].append(execute)   
     return fw
-"""
-def find_word(dict, word): #works specifically for the csv file 
-    fw = {}
-    for name_of_cat in dict:
-        statement = name_of_cat['Quote']
-        if word in statement: 
-            execute = name_of_cat['Quote #']
-            fw.setdefault(word,[])
-            fw[word].append(execute)   
-    return fw
-"""
-
 
 
 def search(w1, w2, key, dict):
@@ -95,47 +83,15 @@ def search(w1, w2, key, dict):
     return l
 
 
-def init_nltk():
-    global tokenizer
-    global tagger
-    tokenizer = nltk.tokenize.RegexpTokenizer(r'\w+|[^\w\s]+')
-    tagger = nltk.UnigramTagger(nltk.corpus.brown.tagged_sents())
-
-def tag(text):
-    global tokenizer
-    global tagger
-    if not tokenizer:
-        init_nltk()
-    tokenized = tokenizer.tokenize(text)
-    tagged = tagger.tag(tokenized)
-    tagged.sort(lambda x,y:cmp(x[1],y[1]))
-    return tagged
-
-    
-
-example_words = ["living","planning","growing"]
-
-            
-
-
 d = csv_d('famous_quotes.csv')
 
 print(search("is", "life", "not", d))
 
-#add possible ways of implementing stem library
+#implementing stem library
 example_words = ["planning","growing","living"]
 for w in example_words:
     print(ps.stem(w))
-#antoher form of implemention
-print (d.dispersion_plot(["help", "live"])) #print a plot 
 
 
 
-
-
-'''
-for key, val in iindex(d, remorse_word).items():
-    print(key)
-    print(' = ' + str(val), '\n')
-'''
 
