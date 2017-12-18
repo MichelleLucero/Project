@@ -2,6 +2,8 @@ import csv
 import nltk
 from nltk.stem import PorterStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.stem.snowball import SnowballStemmer
+
 ps = PorterStemmer()
 
 def csv_d(file): 
@@ -91,7 +93,6 @@ print(search("is", "life", "not", d))
 example_words = ["planning","growing","living"]
 for w in example_words:
     print(ps.stem(w))
-
-
+    
 
 
