@@ -127,13 +127,11 @@ example_words = ["planning","growing","living"]
 for w in example_words:
     print(ps.stem(w))
 #antoher form of implemention
-print (d.concordance("hard"))
 print (d.dispersion_plot(["help", "live"])) #print a plot 
 
 
 
-print('The nltk version is {}.'.format(nltk.__version__)) 
-#just to check the nltk version 
+
 
 '''
 for key, val in iindex(d, remorse_word).items():
