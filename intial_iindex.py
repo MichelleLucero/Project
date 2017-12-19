@@ -1,6 +1,6 @@
 import csv
 
-def alpha(word): 
+def alpha(word): #tempaorary 
     total=""
     for i in word:
         if i.isalpha() or i == " ": 
