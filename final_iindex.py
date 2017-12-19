@@ -2,7 +2,7 @@ import csv
 import nltk
 from nltk.stem import PorterStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
-from nltk.stem.snowball import SnowballStemmer
+
 
 ps = PorterStemmer()
 
@@ -15,16 +15,29 @@ def csv_d(file):
     f.close()
     return l
 
+
 def find_word(dict, word): #works specifically for the csv file 
     fw = {}
+    stem_word = ps.stem(word)
     for name_of_cat in dict:
         statement = name_of_cat['Quote']
-
-        if word in statement: 
+        statement = stem_quote(statement)
+        if stem_word in statement: 
             execute = name_of_cat['Quote #']
             fw.setdefault(word,[])
             fw[word].append(execute)   
     return fw
+
+def stem_quote(my_text):
+    token=""
+    text=""
+    tokens = nltk.word_tokenize(my_text)
+    for token in tokens:
+        token = token
+        token = ps.stem(token)    
+        text = text + " " + token
+    return text
+
 
 
 def search(w1, w2, key, dict):
@@ -87,12 +100,10 @@ def search(w1, w2, key, dict):
 
 d = csv_d('famous_quotes.csv')
 
-print(search("is", "life", "not", d))
+print(search("imagine", "wise", "and", d))
 
-#implementing stem library
-example_words = ["planning","growing","living"]
-for w in example_words:
-    print(ps.stem(w))
+
     
+#print(find_word(d, 'destroy'))
 
 
